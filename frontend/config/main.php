@@ -45,6 +45,10 @@ return [
                 'route' => 'site/listpaket',
                 ],            
                 [
+                'pattern' => '/daftar-paket-wisata?<page:\d+>&<per-page:\d+>',
+                'route' => 'site/listpaket',
+                ],            
+                [
                 'pattern' => '/paket-wisata',
                 'route' => 'site/index',
                 ],            

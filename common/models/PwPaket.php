@@ -77,4 +77,10 @@ class PwPaket extends \yii\db\ActiveRecord
     {
         return $this->hasOne(PwKategori::className(), ['id' => 'kategori_id']);
     }
+
+    public static function GetListPaket($id_kategori)
+    {
+        $data = PwPaket::find()->where(['=', 'kategori_id', $id_kategori]);
+        return $data;
+    }
 }

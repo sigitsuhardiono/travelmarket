@@ -32,4 +32,6 @@ class TopAsset extends AssetBundle
     public $jsOptions = array(
         'position' => \yii\web\View::POS_HEAD
     );
+    public $depends = [
+    ];
 }

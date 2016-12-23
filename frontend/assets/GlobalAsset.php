@@ -14,7 +14,7 @@ class GlobalAsset extends AssetBundle
     public $css = [
     ];
     public $js = [
-        'site/plugins/jquery.min.js',
+        // 'site/plugins/jquery.min.js',
         'site/bootstrap/js/bootstrap.min.js',
         'site/plugins/modernizr.js',
         'site/plugins/rs-plugin/js/jquery.themepunch.tools.min.js',
@@ -37,6 +37,9 @@ class GlobalAsset extends AssetBundle
         'site/js/custom.js',
     ];
     public $depends = [
-        'frontend\assets\TopAsset'
+        'frontend\assets\TopAsset',
     ];
+    public $jsOptions = array(
+        'position' => \yii\web\View::POS_END
+    );
 }

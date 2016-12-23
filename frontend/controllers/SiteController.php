@@ -7,6 +7,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\data\Pagination;
 //---model
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -235,8 +236,17 @@ class SiteController extends Controller
         $kategori = PwKategori::find()->all();
         $kota = Kota::find()->all();
         if ($model->load(Yii::$app->request->post())) {
-            $PwPaket = PwPaket::find()->where(['=', 'kategori_id', $model->id_kategori])->all();
-            return $this->render('list-paket',['model'=>$model,'PwPaket'=>$PwPaket,'kategori' => $kategori,'kota' => $kota]);              
+            $PwPaket = new PwPaket();
+            $query =  $PwPaket->GetListPaket($model->id_kategori);
+            $countQuery = clone $query;
+            $pages = new Pagination(['totalCount' => $countQuery->count()]);
+            $pages->params = (['kategori'=>$model->id_kategori]);
+            $pages->route = 'daftar-paket-wisata/';
+            $pages->setPageSize(1);
+            $DataPaket = $query->offset($pages->offset)
+                ->limit($pages->limit)
+                ->all();
+            return $this->render('list-paket',['pages' => $pages,'model'=>$model,'DataPaket'=>$DataPaket,'kategori' => $kategori,'kota' => $kota]);              
         }
         else{
             return $this->render('index' ,[

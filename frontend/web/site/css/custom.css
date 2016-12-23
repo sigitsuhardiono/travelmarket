@@ -17,3 +17,16 @@ File Description: Place here your custom CSS styles
 	    margin-left: 10px;
 	}
 }
+
+.pagination > li.disabled > a, .pagination > li.disabled > span {
+	text-align: center;
+    padding: 0;
+    height: 40px;
+    width: 40px;
+    line-height: 39px;
+    background-color: #ffffff;
+    display: inline-block;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
