@@ -21,7 +21,7 @@
                     <div class="container">
                         <!-- filters start -->
                         <div class="sorting-filters text-center mb-20">
-                            <?php $form = ActiveForm::begin(['action' =>['/daftar-paket-wisata'],'id' => 'frmPwWisata','options' => ['class'=>'form-inline','role'=>'form']]); ?>
+                            <?php $form = ActiveForm::begin(['id' => 'frmPwWisata','options' => ['class'=>'form-inline','role'=>'form']]); ?>
                                 <?= $form->field($model, 'id_kategori')->dropDownList(ArrayHelper::map($kategori, 'id', 'nama'), ['id' => 'idKategori', 'class' => 'form-control']) ?>
                                 <?= $form->field($model, 'id_kota')->dropDownList(ArrayHelper::map($kota, 'id', 'nama'), ['id' => 'idKategori', 'class' => 'form-control']) ?>
                                 <div class="form-group">

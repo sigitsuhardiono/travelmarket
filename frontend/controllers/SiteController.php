@@ -7,7 +7,9 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\filters\Cors;
 use yii\data\Pagination;
+use yii\helpers\Url;
 //---model
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -15,7 +17,6 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\WisataForm;
-
 //---active record
 use common\models\PwKategori;
 use common\models\PwPaket;
@@ -54,6 +55,14 @@ class SiteController extends Controller
                     'logout' => ['post'],
                 ],
             ],
+            'corsFilter' => [
+                'class' => Cors::className(),
+                'cors' => [
+                    // restrict access to
+                    'Origin' => ['*'],
+                ],
+
+            ],
         ];
     }
 
@@ -83,9 +92,14 @@ class SiteController extends Controller
         $model = new WisataForm();
         $kategori = PwKategori::find()->all();
         $kota = Kota::find()->all();
-        return $this->render('index' ,[
-                'kategori' => $kategori,'kota' => $kota,'model'=>$model
-        ]);
+        if ($model->load(Yii::$app->request->post())) {
+           return $this->redirect(Url::to(['list-paket-wisata', 'kategori' => $model->id_kategori]));
+        }
+        else{
+            return $this->render('index' ,[
+                    'kategori' => $kategori,'kota' => $kota,'model'=>$model
+            ]);
+        }
     }
 
     /**
@@ -230,29 +244,22 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionListpaket()
+    public function actionListPaketWisata($kategori)
     {
         $model = new WisataForm();
-        $kategori = PwKategori::find()->all();
+        $dtkategori = PwKategori::find()->all();
         $kota = Kota::find()->all();
-        if ($model->load(Yii::$app->request->post())) {
-            $PwPaket = new PwPaket();
-            $query =  $PwPaket->GetListPaket($model->id_kategori);
-            $countQuery = clone $query;
-            $pages = new Pagination(['totalCount' => $countQuery->count()]);
-            $pages->params = (['kategori'=>$model->id_kategori]);
-            $pages->route = 'daftar-paket-wisata/';
-            $pages->setPageSize(1);
-            $DataPaket = $query->offset($pages->offset)
-                ->limit($pages->limit)
-                ->all();
-            return $this->render('list-paket',['pages' => $pages,'model'=>$model,'DataPaket'=>$DataPaket,'kategori' => $kategori,'kota' => $kota]);              
-        }
-        else{
-            return $this->render('index' ,[
-                    'kategori' => $kategori,'kota' => $kota,'model'=>$model
-            ]);
-        }
+        $PwPaket = new PwPaket();
+        $query =  $PwPaket->GetListPaket($kategori);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $pages->params = (['kategori'=>$kategori,'page'=>$pages->offset,'per-page'=>$pages->limit]);
+        $pages->route = 'site/list-paket-wisata/';
+        $pages->setPageSize(1);
+        $DataPaket = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('list-paket',['pages' => $pages,'model'=>$model,'DataPaket'=>$DataPaket,'kategori' => $dtkategori,'kota' => $kota]);              
     }
 
 }

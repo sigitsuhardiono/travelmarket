@@ -10,7 +10,7 @@
 ?>
 <!-- banner start -->
 <!-- ================ -->
-<div class="banner dark-translucent-bg" style="background-image:url('images/shop-banner.jpg'); background-position:50% 32%;">
+<div class="banner dark-translucent-bg" style="background-image:url('../images/shop-banner.jpg'); background-position:50% 32%;">
     <!-- breadcrumb start -->
     <!-- ================ -->
     <div class="breadcrumb-container">
@@ -71,7 +71,7 @@
                             <div class="row grid-space-0">
                                 <div class="col-sm-6 col-md-4 col-lg-3">
                                     <div class="overlay-container">
-                                        <img src="images/danau.jpg" alt="">
+                                        <img src="../images/danau.jpg" alt="">
                                         <a class="overlay-link" href="shop-product.html"><i class="fa fa-plus"></i></a>
                                     </div>
                                 </div>

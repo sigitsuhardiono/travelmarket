@@ -30,13 +30,8 @@ GlobalAsset::register($this);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="shortcut icon" href="../images/favicon.ico">
 
-        <!-- Web Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
         <?php $this->head(); ?>
 </head>
 
@@ -134,7 +129,7 @@ GlobalAsset::register($this);
 
                                     <!-- logo -->
                                     <div id="logo" class="logo">
-                                        <a href="/"><img id="logo_img" src="images/logo_gold.png" alt="The Project"></a>
+                                        <a href="/"><img id="logo_img" src="../images/logo_gold.png" alt="The Project"></a>
                                     </div>
 
                                     <!-- name-and-slogan -->

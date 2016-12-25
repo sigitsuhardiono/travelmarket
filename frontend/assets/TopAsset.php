@@ -12,6 +12,10 @@ class TopAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic',
+        'http://fonts.googleapis.com/css?family=Raleway:700,400,300',
+        'http://fonts.googleapis.com/css?family=Pacifico',
+        'http://fonts.googleapis.com/css?family=PT+Serif',
         'site/bootstrap/css/bootstrap.css',
         'site/fonts/font-awesome/css/font-awesome.css',
         'site/fonts/fontello/css/fontello.css',
