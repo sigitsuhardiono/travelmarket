@@ -16,7 +16,6 @@ class TopAsset extends AssetBundle
         'http://fonts.googleapis.com/css?family=Raleway:700,400,300',
         'http://fonts.googleapis.com/css?family=Pacifico',
         'http://fonts.googleapis.com/css?family=PT+Serif',
-        'site/bootstrap/css/bootstrap.css',
         'site/fonts/font-awesome/css/font-awesome.css',
         'site/fonts/fontello/css/fontello.css',
         'site/plugins/magnific-popup/magnific-popup.css',
@@ -37,5 +36,7 @@ class TopAsset extends AssetBundle
         'position' => \yii\web\View::POS_HEAD
     );
     public $depends = [
+        'yii\web\YiiAsset',
+        'yii\bootstrap\BootstrapAsset',
     ];
 }

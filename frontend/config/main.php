@@ -41,14 +41,6 @@ return [
             'showScriptName' => false,
             'rules' => [
                 [
-                'pattern' => '/daftar-paket-wisata',
-                'route' => 'site/listpaket',
-                ],            
-                [
-                'pattern' => '/daftar-paket-wisata?<page:\d+>&<per-page:\d+>',
-                'route' => 'site/listpaket',
-                ],            
-                [
                 'pattern' => '/paket-wisata',
                 'route' => 'site/index',
                 ],            

@@ -179,7 +179,7 @@ GlobalAsset::register($this);
                                                     <!-- mega-menu start -->
                                                     <li><a href="paket-wisata">Paket Wisata</a></li>
                                                     <li> <a href="umroh">Umroh</a></li>
-                                                    <li> <a href="travel">Trvel</a></li>
+                                                    <li> <a href="travel">Travel</a></li>
                                                     <li> <a href="drop">Drop</a></li>
                                                     <li> <a href="rental">Rental</a></li>
                                                 </ul>
@@ -213,30 +213,6 @@ GlobalAsset::register($this);
             <!-- header-container end -->
             <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
             <?= $content ?>
-            <!-- ++++++++++++++++++++++++++++++ -->     
-            <!-- footer top start -->
-            <!-- ================ -->
-            <div class="dark-bg footer-top animated-text default-hovered">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="call-to-action text-center">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h1 class="title">Don't Miss Out Our Offers</h1>
-                                        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quasi explicabo consequatur consectetur, a atque voluptate officiis eligendi nostrum.</p>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <br>
-                                        <p><a href="#" class="btn btn-lg btn-default btn-animated">Learn More<i class="fa fa-arrow-right pl-20"></i></a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- footer top end -->     
             <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
             <!-- ================ -->
             <footer id="footer" class="clearfix ">
@@ -249,7 +225,7 @@ GlobalAsset::register($this);
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="footer-content">
-                                        <div class="logo-footer"><img id="logo-footer" src="images/logo_gold.png" alt=""></div>
+                                        <div class="logo-footer"><img id="logo-footer" src="../images/logo_gold.png" alt=""></div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus illo vel dolorum soluta consectetur doloribus sit. Delectus non tenetur odit dicta vitae debitis suscipit doloribus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed dolore fugit vitae quia dicta inventore reiciendis. Ipsa, aut voluptas quaerat.</p>

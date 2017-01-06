@@ -26,7 +26,7 @@
                                 <?= $form->field($model, 'id_kota')->dropDownList(ArrayHelper::map($kota, 'id', 'nama'), ['id' => 'idKategori', 'class' => 'form-control']) ?>
                                 <div class="form-group">
                                     <label class="control-label">&nbsp;</label>
-                                    <?= Html::submitButton('Save <i class="fa fa-check"></i>', ['class' => 'btn btn-gray-transparent btn-animated margin-clear']) ?>
+                                    <?= Html::submitButton('Cari', ['class' => 'btn btn-gray-transparent btn-animated margin-clear']) ?>
                                     <div class="mt-5 mb-10"></div>
                                 </div>
                             <?php ActiveForm::end(); ?>

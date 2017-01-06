@@ -17,6 +17,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\WisataForm;
+use frontend\models\SimpanWisataForm;
 //---active record
 use common\models\PwKategori;
 use common\models\PwPaket;
@@ -239,11 +240,11 @@ class SiteController extends Controller
     }
 
 
-     /**
+    /**
      * Displays daftar paket wisata.
      *
      * @return mixed
-     */
+    */
     public function actionListPaketWisata($kategori)
     {
         $model = new WisataForm();
@@ -255,11 +256,37 @@ class SiteController extends Controller
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $pages->params = (['kategori'=>$kategori,'page'=>$pages->offset,'per-page'=>$pages->limit]);
         $pages->route = 'site/list-paket-wisata/';
-        $pages->setPageSize(1);
+        $pages->setPageSize(2);
         $DataPaket = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
         return $this->render('list-paket',['pages' => $pages,'model'=>$model,'DataPaket'=>$DataPaket,'kategori' => $dtkategori,'kota' => $kota]);              
+    }
+
+
+    /**
+     * Displays detail paket wisata.
+     *
+     * @return mixed
+    */
+    public function actionDetailPaketWisata($id)
+    {
+        $PwPaket = new PwPaket();
+        $DataPaket =  $PwPaket->GetPaketById($id);
+        return $this->render('detail-paket',['DataPaket'=>$DataPaket]);              
+    }
+
+    /**
+     * Displays detail paket wisata.
+     *
+     * @return mixed
+    */
+    public function actionPesanPaketWisata($id)
+    {
+        $model = new SimpanWisataForm();
+        $PwPaket = new PwPaket();
+        $DataPaket =  $PwPaket->GetPaketById($id);
+        return $this->render('pesan-paket-1',['DataPaket'=>$DataPaket,'model'=>$model]);              
     }
 
 }
