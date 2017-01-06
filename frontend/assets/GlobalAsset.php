@@ -26,7 +26,7 @@ class GlobalAsset extends AssetBundle
         'site/plugins/jquery.parallax-1.1.3.js',
         'site/plugins/jquery.validate.js',
         'site/plugins/morphext/morphext.min.js',
-        'https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyASvJ4qWz-yTDlzrTyKUOWhMTzge1RKh70',
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyBRvPgWdEwR99-u5GeSxvkwXcPnZxxwqXY&v=3&libraries=places&region=id',
         'site/js/google.map.config.js',
         'site/plugins/vide/jquery.vide.js',
         'site/plugins/owl-carousel/owl.carousel.js',

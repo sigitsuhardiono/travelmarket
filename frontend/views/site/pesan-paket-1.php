@@ -60,10 +60,15 @@
                                         </div>
                                         <div class="col-lg-8 col-lg-offset-1">
                                             <?= $form->field($model, 'nama_pemesan',['template' => '{label}<div class="col-sm-7">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]]) ?>
+
                                             <?= $form->field($model, 'telp1',['template' => '{label}<div class="col-sm-3">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]]) ?>
+
                                             <?= $form->field($model, 'telp2',['template' => '{label}<div class="col-sm-3">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]]) ?>
-                                            <?= $form->field($model, 'alamat_jemput',['template' => '{label}<div class="col-sm-9">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]]) ?>
+
+                                            <?= $form->field($model, 'alamat_jemput',['template' => '{label}<div class="col-sm-9">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]])->textInput(['id' => 'automap']) ?>
+
                                             <?= $form->field($model, 'detail_jemput',['template' => '{label}<div class="col-sm-9">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]])->textArea(['rows' => '6']) ?>
+
                                             <?= $form->field($model, 'keterangan',['template' => '{label}<div class="col-sm-9">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]])->textArea(['rows' => '6']) ?>
 
                                         </div>
@@ -81,6 +86,8 @@
                 </div>
             </section>
             <!-- main-container end -->
-
+<?php
+$this->registerJsFile('@web/site/js/paket_wisata.js', ['depends' => [\frontend\assets\GlobalAsset::className()]]);
+?>
 
 
