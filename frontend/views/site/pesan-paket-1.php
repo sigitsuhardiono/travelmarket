@@ -65,19 +65,26 @@
 
                                             <?= $form->field($model, 'telp2',['template' => '{label}<div class="col-sm-3">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]]) ?>
 
+                                            <?= $form->field($model, 'harga')->hiddenInput(['value' => $DataPaket->harga])->label(false) ?>
+
+                                            <?= $form->field($model, 'paket_id')->hiddenInput(['value' => $DataPaket->id])->label(false) ?>
+
                                             <?= $form->field($model, 'alamat_jemput',['template' => '{label}<div class="col-sm-9">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]])->textInput(['id' => 'automap']) ?>
 
                                             <?= $form->field($model, 'detail_jemput',['template' => '{label}<div class="col-sm-9">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]])->textArea(['rows' => '6']) ?>
 
                                             <?= $form->field($model, 'keterangan',['template' => '{label}<div class="col-sm-9">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]])->textArea(['rows' => '6']) ?>
 
+                                            <?= $form->field($model, 'metode_bayar',['template' => '{label}<div class="col-sm-9">{input}{error}{hint}</div>','labelOptions' => [ 'class' => 'col-md-3 control-label' ]])->radioList(array('1'=>'BRI',2=>'Mandiri',3=>'BCA')); ?>
+
                                         </div>
                                 </div>
-                                <?php ActiveForm::end(); ?>
                             </fieldset>
                             <div class="text-right">    
-                                <a href="shop-checkout-payment.html" class="btn btn-group btn-default">Next Step <i class="icon-right-open-big"></i></a>
+                                <?= Html::submitButton('Pesan', ['class' => 'btn btn-group btn-default']) ?>
                             </div>
+                            <?php ActiveForm::end(); ?>
+
 
                         </div>
                         <!-- main end -->

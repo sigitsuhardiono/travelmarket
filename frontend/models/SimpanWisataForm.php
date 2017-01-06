@@ -18,6 +18,7 @@ class SimpanWisataForm extends Model
     public $metode_bayar;
     public $paket_id;
     public $keterangan;
+    public $harga;
 
 
     /**
