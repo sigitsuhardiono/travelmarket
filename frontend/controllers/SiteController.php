@@ -300,13 +300,23 @@ class SiteController extends Controller
             $TrPaketwisata->keterangan = $model->keterangan;
             $TrPaketwisata->created_at = time();
             $TrPaketwisata->save();
-            echo "sukses";
-            die();
+            Yii::$app->getSession()->setFlash('no_order', $TrPaketwisata->kode);
+            $this->redirect(array("/site/pemesanan-paket-sukses?by=".$TrPaketwisata->metode_bayar));
         }
         else{
             $DataPaket =  $PwPaket->GetPaketById($id);
             return $this->render('pesan-paket-1',['DataPaket'=>$DataPaket,'model'=>$model]);              
         }
+    }
+
+    /**
+     * Displays pemesanan paket wista sukses.
+     *
+     * @return mixed
+    */
+    public function actionPemesananPaketSukses($by)
+    {
+        return $this->render('pemesanan-paket-sukses',['by'=>$by]);              
     }
 
 }
