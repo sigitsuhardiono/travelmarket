@@ -177,8 +177,8 @@ GlobalAsset::register($this);
                                                 <ul class="nav navbar-nav ">
 
                                                     <!-- mega-menu start -->
-                                                    <li><a href="paket-wisata">Paket Wisata</a></li>
-                                                    <li> <a href="umroh">Umroh</a></li>
+                                                    <li><a href="/paket-wisata">Paket Wisata</a></li>
+                                                    <li> <a href="/umroh">Umroh</a></li>
                                                     <li> <a href="travel">Travel</a></li>
                                                     <li> <a href="drop">Drop</a></li>
                                                     <li> <a href="rental">Rental</a></li>

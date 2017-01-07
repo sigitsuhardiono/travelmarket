@@ -17,6 +17,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\WisataForm;
+use frontend\models\UmrohForm;
 use frontend\models\SimpanWisataForm;
 //---active record
 use common\models\PwKategori;
@@ -318,5 +319,51 @@ class SiteController extends Controller
     {
         return $this->render('pemesanan-paket-sukses',['by'=>$by]);              
     }
+
+        /**
+     * Displays umroh.
+     *
+     * @return mixed
+     */
+    public function actionUmroh()
+    {
+        $model = new UmrohForm();
+        $kota = Kota::find()->all();
+        if ($model->load(Yii::$app->request->post())) {
+           return $this->redirect(Url::to(['list-paket-umroh', 'kota' => $model->id_kota]));
+        }
+        else{
+            return $this->render('umroh' ,[
+                'kota' => $kota,'model'=>$model
+            ]);
+        }
+    }
+
+
+    /**
+     * Displays daftar layanan umroh.
+     *
+     * @return mixed
+    */
+    public function actionListPaketUmroh($kota)
+    {
+        $model = new UmrohForm();
+        $dtkategori = PwKategori::find()->all();
+        $listkota = Kota::find()->all();
+        $PwPaket = new PwPaket();
+        $query =  $PwPaket->GetListUmroh($kota);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $pages->params = (['kota'=>$listkota,'page'=>$pages->offset,'per-page'=>$pages->limit]);
+        $pages->route = 'site/list-paket-umroh/';
+        $pages->setPageSize(2);
+        $DataPaket = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('list-umroh',['pages' => $pages,'model'=>$model,'DataPaket'=>$DataPaket,'kota' => $listkota]);              
+    }
+
+
+
 
 }

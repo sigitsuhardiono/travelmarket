@@ -44,6 +44,10 @@ return [
                 'pattern' => '/paket-wisata',
                 'route' => 'site/index',
                 ],            
+                [
+                'pattern' => '/umroh',
+                'route' => 'site/umroh',
+                ],            
             ],
         ],
     ],
