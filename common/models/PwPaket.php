@@ -80,7 +80,7 @@ class PwPaket extends \yii\db\ActiveRecord
 
     public static function GetListPaket($id_kategori)
     {
-        $data = PwPaket::find()->where(['=', 'kategori_id', $id_kategori]);
+        $data = PwPaket::find()->where(['=', 'kategori_id', $id_kategori])->andWhere(['=', 'pw_paket.status_wisata', 1]);
         return $data;
     }
 

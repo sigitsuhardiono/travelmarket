@@ -55,7 +55,7 @@
                             <div class="image-box style-2 mb-20">
                                 <div class="overlay-container overlay-visible">
                                     <img src="images/hotel-service-1.jpg" alt="">
-                                    <a href="#" class="overlay-link"><i class="fa fa-link"></i></a>
+                                    <a href="<?php echo Url::to(['detail-paket-wisata', 'id' => $wisata_terbaru->id])?>" class="overlay-link"><i class="fa fa-link"></i></a>
                                     <div class="overlay-bottom">
                                         <div class="text">
                                             <p class="lead margin-clear text-left mobile-visible"><?php echo $wisata_terbaru->nama?></p>
