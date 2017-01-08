@@ -86,7 +86,7 @@ class PwPaket extends \yii\db\ActiveRecord
 
     public static function GetListUmroh($id_kota)
     {
-        $data = PwPaket::find()->joinWith('company')->where(['=', 'company.id_kota', $id_kota])->andWhere(['=', 'pw_paket.kategori_id', 2]);
+        $data = PwPaket::find()->joinWith('company')->where(['=', 'company.id_kota', $id_kota])->andWhere(['=', 'pw_paket.status_wisata', 2]);
         return $data;
     }
 

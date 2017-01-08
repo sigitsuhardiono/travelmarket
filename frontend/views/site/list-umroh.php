@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="col-sm-6 col-md-8 col-lg-9">
                                     <div class="body">
-                                        <h3 class="margin-clear"><a href="<?php echo Url::to(['detail-paket-wisata', 'id' => $dtpaket->id])?>"><?php echo $dtpaket->nama;?></a></h3>
+                                        <h3 class="margin-clear"><a href="<?php echo Url::to(['detail-paket-umroh', 'id' => $dtpaket->id])?>"><?php echo $dtpaket->nama;?></a></h3>
                                         <p>
                                             <i class="fa fa-star text-default"></i>
                                             <i class="fa fa-star text-default"></i>
@@ -103,7 +103,7 @@
                                         <p><?php echo $dtpaket->deskripsi;?></p>
                                         <div class="elements-list clearfix">
                                             <span class="price">IDR <?php echo number_format($dtpaket->harga);?></span>
-                                            <a href="<?php echo Url::to(['detail-paket-wisata', 'id' => $dtpaket->id])?>" class="pull-right btn btn-sm btn-default-transparent">More Detail</a>
+                                            <a href="<?php echo Url::to(['detail-paket-umroh', 'id' => $dtpaket->id])?>" class="pull-right btn btn-sm btn-default-transparent">More Detail</a>
                                         </div>
                                     </div>
                                 </div>

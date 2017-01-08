@@ -364,6 +364,59 @@ class SiteController extends Controller
     }
 
 
+    /**
+     * Displays detail paket umroh.
+     *
+     * @return mixed
+    */
+    public function actionDetailPaketUmroh($id)
+    {
+        $PwPaket = new PwPaket();
+        $DataPaket =  $PwPaket->GetPaketById($id);
+        return $this->render('detail-umroh',['DataPaket'=>$DataPaket]);              
+    }
+
+   /**
+     * Displays detail paket umroh.
+     *
+     * @return mixed
+    */
+    public function actionPesanPaketUmroh($id)
+    {
+        $model = new SimpanWisataForm();
+        $PwPaket = new PwPaket();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $TrPaketwisata = new TrPaketwisata();
+            $TrPaketwisata->kode = "Pu-".time();
+            $TrPaketwisata->nama_pemesan = $model->nama_pemesan;
+            $TrPaketwisata->telp1 = $model->telp1;
+            $TrPaketwisata->telp2 = $model->telp2;
+            $TrPaketwisata->alamat_jemput = $model->alamat_jemput;
+            $TrPaketwisata->detail_jemput = $model->detail_jemput;
+            $TrPaketwisata->harga = $model->harga;
+            $TrPaketwisata->metode_bayar = $model->metode_bayar;
+            $TrPaketwisata->paket_id = $model->paket_id;
+            $TrPaketwisata->keterangan = $model->keterangan;
+            $TrPaketwisata->created_at = time();
+            $TrPaketwisata->save();
+            Yii::$app->getSession()->setFlash('no_order', $TrPaketwisata->kode);
+            $this->redirect(array("/site/pemesanan-umroh-sukses?by=".$TrPaketwisata->metode_bayar));
+        }
+        else{
+            $DataPaket =  $PwPaket->GetPaketById($id);
+            return $this->render('pesan-umroh-1',['DataPaket'=>$DataPaket,'model'=>$model]);              
+        }
+    }
+
+    /**
+     * Displays pemesanan paket umroh sukses.
+     *
+     * @return mixed
+    */
+    public function actionPemesananUmrohSukses($by)
+    {
+        return $this->render('pemesanan-umroh-sukses',['by'=>$by]);              
+    }
 
 
 }
