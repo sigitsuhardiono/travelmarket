@@ -94,13 +94,14 @@ class SiteController extends Controller
     {
         $model = new WisataForm();
         $kategori = PwKategori::find()->all();
+        $pwWisataNew =  PwPaket::find()->with('company')->where(['=', 'pw_paket.status_wisata', 1])->limit(4)->all();
         $kota = Kota::find()->all();
         if ($model->load(Yii::$app->request->post())) {
            return $this->redirect(Url::to(['list-paket-wisata', 'kategori' => $model->id_kategori]));
         }
         else{
             return $this->render('index' ,[
-                    'kategori' => $kategori,'kota' => $kota,'model'=>$model
+                    'newest_wisata' => $pwWisataNew,'kategori' => $kategori,'kota' => $kota,'model'=>$model
             ]);
         }
     }
@@ -329,12 +330,13 @@ class SiteController extends Controller
     {
         $model = new UmrohForm();
         $kota = Kota::find()->all();
+        $pwUmrohNew =  PwPaket::find()->with('company')->where(['=', 'pw_paket.status_wisata', 2])->limit(4)->all();
         if ($model->load(Yii::$app->request->post())) {
            return $this->redirect(Url::to(['list-paket-umroh', 'kota' => $model->id_kota]));
         }
         else{
             return $this->render('umroh' ,[
-                'kota' => $kota,'model'=>$model
+                'newest_umroh' => $pwUmrohNew,'kota' => $kota,'model'=>$model
             ]);
         }
     }
@@ -387,7 +389,7 @@ class SiteController extends Controller
         $PwPaket = new PwPaket();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $TrPaketwisata = new TrPaketwisata();
-            $TrPaketwisata->kode = "Pu-".time();
+            $TrPaketwisata->kode = "PU-".time();
             $TrPaketwisata->nama_pemesan = $model->nama_pemesan;
             $TrPaketwisata->telp1 = $model->telp1;
             $TrPaketwisata->telp2 = $model->telp2;

@@ -1,5 +1,6 @@
            <?php
         use yii\helpers\Html;
+        use yii\helpers\Url;
         use yii\helpers\ArrayHelper;
         use yii\widgets\ActiveForm;
            ?>
@@ -43,12 +44,13 @@
             <section class="light-gray-bg pv-40 border-clear">
                 <div class="container">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="text-center title">Paket Wisata Favorit</h2>
+                        <h2 class="text-center title">Paket Wisata Terbaru</h2>
                         <div class="separator"></div>
                     </div>
                 </div>
                 <div class="container-fluid">
                     <div class="row">
+                        <?php foreach($newest_wisata as $key => $wisata_terbaru):?>
                         <div class="col-sm-3">
                             <div class="image-box style-2 mb-20">
                                 <div class="overlay-container overlay-visible">
@@ -56,67 +58,17 @@
                                     <a href="#" class="overlay-link"><i class="fa fa-link"></i></a>
                                     <div class="overlay-bottom">
                                         <div class="text">
-                                            <p class="lead margin-clear text-left mobile-visible">Weddings</p>
+                                            <p class="lead margin-clear text-left mobile-visible"><?php echo $wisata_terbaru->nama?></p>
+                                            <p class="margin-clear text-left mobile-visible"><?php echo $wisata_terbaru->company->nama?></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="body padding-horizontal-clear">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                    <a class="link-dark" href="page-services.html">Read More</a>
+                                    <a class="link-dark" href="<?php echo Url::to(['detail-paket-wisata', 'id' => $wisata_terbaru->id])?>">Read More</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="image-box style-2 mb-20">
-                                <div class="overlay-container overlay-visible">
-                                    <img src="images/hotel-service-2.jpg" alt="">
-                                    <a href="#" class="overlay-link"><i class="fa fa-link"></i></a>
-                                    <div class="overlay-bottom">
-                                        <div class="text">
-                                            <p class="lead margin-clear text-left mobile-visible">Conferences and Meetings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="body padding-horizontal-clear">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                    <a class="link-dark" href="page-services.html">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="image-box style-2 mb-20">
-                                <div class="overlay-container overlay-visible">
-                                    <img src="images/hotel-service-3.jpg" alt="">
-                                    <a href="#" class="overlay-link"><i class="fa fa-link"></i></a>
-                                    <div class="overlay-bottom">
-                                        <div class="text">
-                                            <p class="lead margin-clear text-left mobile-visible">Events</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="body padding-horizontal-clear">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                    <a class="link-dark" href="page-services.html">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="image-box style-2 mb-20">
-                                <div class="overlay-container overlay-visible">
-                                    <img src="images/hotel-service-4.jpg" alt="">
-                                    <a href="#" class="overlay-link"><i class="fa fa-link"></i></a>
-                                    <div class="overlay-bottom">
-                                        <div class="text">
-                                            <p class="lead margin-clear text-left mobile-visible">Resorts</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="body padding-horizontal-clear">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                    <a class="link-dark" href="page-services.html">Read More</a>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach;?>
                     </div>
 
                 </div>
