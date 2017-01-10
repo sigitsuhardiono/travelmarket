@@ -10,9 +10,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 text-center col-md-offset-2 pv-20">
-                            <h1 class="title">Umroh</h1>
+                            <h1 class="title">Travel</h1>
                             <div class="separator mt-10"></div>
-                            <p class="text-center">Cari dan temukan layanan umroh di kota anda.</p>
+                            <p class="text-center">Cari dan temukan layanan travel di kota anda.</p>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,10 @@
                         <!-- filters start -->
                         <div class="sorting-filters text-center mb-20">
                             <?php $form = ActiveForm::begin(['id' => 'frmPwWisata','options' => ['class'=>'form-inline','role'=>'form']]); ?>
-                                <?= $form->field($model, 'id_kota')->dropDownList(ArrayHelper::map($kota, 'id', 'nama'), ['id' => 'idKategori', 'class' => 'form-control']) ?>
+                                <?= $form->field($model, 'id_kota_berangkat')->dropDownList(ArrayHelper::map($kota, 'id', 'nama'), ['id' => 'idKategori', 'class' => 'form-control']) ?>
+                                <?= $form->field($model, 'id_kota_tujuan')->dropDownList(ArrayHelper::map($kota, 'id', 'nama'), ['id' => 'idKategori', 'class' => 'form-control']) ?>
+                                <?= $form->field($model, 'tgl_berangkat')->TextInput(['maxlength' => 255, 'class' => 'form-control datepicker']) ?>
+                                <?= $form->field($model, 'jam_berangkat',['template' => '{label}<div class="clockpicker" data-autoclose="true">{input}</div>{error}{hint}','labelOptions' => [ 'class' => 'control-label' ]]) ?>
                                 <div class="form-group">
                                     <label class="control-label">&nbsp;</label>
                                     <?= Html::submitButton('Cari', ['class' => 'btn btn-gray-transparent btn-animated margin-clear']) ?>
@@ -43,31 +46,13 @@
             <section class="light-gray-bg pv-40 border-clear">
                 <div class="container">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="text-center title">Paket Umroh Favorit</h2>
+                        <h2 class="text-center title">Layanan Travel Terbaru</h2>
                         <div class="separator"></div>
                     </div>
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                     <?php foreach($newest_umroh as $key => $umroh_terbaru):?>
-                        <div class="col-sm-3">
-                            <div class="image-box style-2 mb-20">
-                                <div class="overlay-container overlay-visible">
-                                    <img src="images/hotel-service-1.jpg" alt="">
-                                    <a href="<?php echo Url::to(['detail-paket-wisata', 'id' => $umroh_terbaru->id])?>" class="overlay-link"><i class="fa fa-link"></i></a>
-                                    <div class="overlay-bottom">
-                                        <div class="text">
-                                            <p class="lead margin-clear text-left mobile-visible"><?php echo $umroh_terbaru->nama?></p>
-                                            <p class="margin-clear text-left mobile-visible"><?php echo $umroh_terbaru->company->nama?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="body padding-horizontal-clear">
-                                    <a class="link-dark" href="<?php echo Url::to(['detail-paket-umroh', 'id' => $umroh_terbaru->id])?>">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <?php endforeach;?>
+                    
                     </div>
                 </div>
             </section>
@@ -81,7 +66,7 @@
                         <div class="col-md-4">
                             <div class="testimonial text-center">
                                 <div class="testimonial-image">
-                                    <img src="images/testimonial-1.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
+                                    <img src="../images/testimonial-1.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
                                 </div>
                                 <h3>Just Perfect!</h3>
                                 <div class="separator"></div>
@@ -97,7 +82,7 @@
                         <div class="col-md-4">
                             <div class="testimonial text-center">
                                 <div class="testimonial-image">
-                                    <img src="../images/testimonial-2.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
+                                    <img src="images/testimonial-2.jpg" alt="Jane Doe" title="Jane Doe" class="img-circle">
                                 </div>
                                 <h3>Amazing!</h3>
                                 <div class="separator"></div>
@@ -130,3 +115,6 @@
                 </div>
             </section>
             <!-- section end -->
+<?php
+$this->registerJsFile('@web/site/js/travel.js', ['depends' => [\frontend\assets\GlobalAsset::className()]]);
+?>

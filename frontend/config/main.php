@@ -48,6 +48,10 @@ return [
                 'pattern' => '/umroh',
                 'route' => 'site/umroh',
                 ],            
+                [
+                'pattern' => '/travel',
+                'route' => 'site/travel',
+                ],            
             ],
         ],
     ],

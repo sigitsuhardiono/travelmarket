@@ -28,6 +28,8 @@ class TopAsset extends AssetBundle
         'site/css/style.css',
         'site/css/typography-default.css',
         'site/css/skins/gold.css',
+        'site/css/bootstrap-datepicker3.min.css',
+        'site/css/bootstrap-clockpicker.min.css',
         'site/css/custom.css',
     ];
     public $js = [

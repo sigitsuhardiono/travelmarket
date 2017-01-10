@@ -34,6 +34,9 @@ class GlobalAsset extends AssetBundle
         'site/plugins/jquery.browser.js',
         'site/plugins/SmoothScroll.js',
         'site/js/template.js',
+        'site/js/bootstrap-datepicker.min.js',
+        'site/js/bootstrap-datepicker.id.min.js',
+        'site/js/jquery-clockpicker.min.js',
         'site/js/custom.js',
     ];
     public $depends = [

@@ -18,6 +18,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\WisataForm;
 use frontend\models\UmrohForm;
+use frontend\models\TravelForm;
 use frontend\models\SimpanWisataForm;
 //---active record
 use common\models\PwKategori;
@@ -420,5 +421,25 @@ class SiteController extends Controller
         return $this->render('pemesanan-umroh-sukses',['by'=>$by]);              
     }
 
+        /**
+     * Displays umroh.
+     *
+     * @return mixed
+     */
+    public function actionTravel()
+    {
+        $model = new TravelForm();
+        $kota = Kota::find()->all();
+        // $pwUmrohNew =  PwPaket::find()->with('company')->where(['=', 'pw_paket.status_wisata', 2])->limit(4)->all();
+        if ($model->load(Yii::$app->request->post())) {
+            echo "asdsad";die();
+           // return $this->redirect(Url::to(['list-paket-umroh', 'kota' => $model->id_kota]));
+        }
+        else{
+            return $this->render('travel' ,[
+                'kota' => $kota,'model'=>$model
+            ]);
+        }
+    }
 
 }
