@@ -25,6 +25,7 @@ use common\models\PwKategori;
 use common\models\PwPaket;
 use common\models\Kota;
 use common\models\TrPaketwisata;
+use common\models\TrTravel;
 
 /**
  * Site controller
@@ -432,8 +433,7 @@ class SiteController extends Controller
         $kota = Kota::find()->all();
         // $pwUmrohNew =  PwPaket::find()->with('company')->where(['=', 'pw_paket.status_wisata', 2])->limit(4)->all();
         if ($model->load(Yii::$app->request->post())) {
-            echo "asdsad";die();
-           // return $this->redirect(Url::to(['list-paket-umroh', 'kota' => $model->id_kota]));
+           return $this->redirect(Url::to(['list-travel', 'id_kota_berangkat' => $model->id_kota_berangkat, 'id_kota_tujuan' => $model->id_kota_tujuan,'tgl_berangkat' => $model->tgl_berangkat, 'jam_berangkat' => $model->jam_berangkat]));
         }
         else{
             return $this->render('travel' ,[
@@ -441,5 +441,28 @@ class SiteController extends Controller
             ]);
         }
     }
+
+    /**
+     * Displays daftar travel.
+     *
+     * @return mixed
+    */
+    public function actionListTravel($id_kota_berangkat,$id_kota_tujuan,$tgl_berangkat,$jam_berangkat)
+    {
+        $model = new TravelForm();
+        $listkota = Kota::find()->all();
+        $TrTravel = new TrTravel();
+        $query =  $TrTravel->GetListTravel($id_kota_berangkat,$id_kota_tujuan,$tgl_berangkat,$jam_berangkat);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $pages->params = (['kota'=>$listkota,'page'=>$pages->offset,'per-page'=>$pages->limit]);
+        $pages->route = 'site/list-travel/';
+        $pages->setPageSize(10);
+        $DataPaket = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('list-travel',['pages' => $pages,'model'=>$model,'DataPaket'=>$DataPaket,'kota' => $listkota]);              
+    }
+
 
 }
