@@ -464,5 +464,14 @@ class SiteController extends Controller
         return $this->render('list-travel',['pages' => $pages,'model'=>$model,'DataPaket'=>$DataPaket,'kota' => $listkota]);              
     }
 
+    /**
+     * Displays pesan travel.
+     *
+     * @return mixed
+     */
+    public function actionPesanTravel()
+    {
+        return $this->render('pesan_travel' ,[]);
+    }
 
 }

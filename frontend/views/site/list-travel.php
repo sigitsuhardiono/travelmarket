@@ -100,7 +100,7 @@
                                         </p>
                                         <div class="elements-list clearfix">
                                             <span class="price">IDR <?php echo number_format($dtpaket->harga);?></span>
-                                            <a href="<?php echo Url::to(['detail-travel', 'id' => $dtpaket->id])?>" class="pull-right btn btn-sm btn-default-transparent">More Detail</a>
+                                            <a href="<?php echo Url::to(['pesan-travel', 'id' => $dtpaket->id])?>" class="pull-right btn btn-sm btn-default-transparent">More Detail</a>
                                         </div>
                                     </div>
                                 </div>

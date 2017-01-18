@@ -31,7 +31,7 @@ class TrPaketwisata extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'tr_paketwisata';
+        return 'trx_paketwisata';
     }
 
     /**
