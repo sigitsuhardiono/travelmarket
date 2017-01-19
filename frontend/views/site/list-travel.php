@@ -72,8 +72,8 @@
                         <!-- ================ -->
                         <div class="main col-md-6 col-md-offset-3 pv-40">
                             <h1 class="page-title"><span class="text-default">Maaf</span></h1>
-                            <p>Data layanan umroh tidak ada</p>
-                            <a href="/umroh" class="btn btn-default btn-animated btn-lg">Return Umroh <i class="fa fa-home"></i></a>
+                            <p>Data travel tidak ada</p>
+                            <a href="/travel" class="btn btn-default btn-animated btn-lg">Return travel <i class="fa fa-home"></i></a>
                         </div>
                         <!-- main end -->
 

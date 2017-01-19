@@ -22,7 +22,7 @@ class SimpanTravelForm extends Model
     public function rules()
     {
         return [
-            [['nama_pemesan', 'telp1','alamat_jemput','detail_jemput','harga','metode_bayar','paket_id'], 'required'],
+            [['nama_pemesan', 'telp1','alamat_jemput','detail_jemput','harga','metode_bayar','id'], 'required'],
             [['nama_pemesan', 'telp1','telp2','alamat_jemput','detail_jemput','harga','metode_bayar','paket_id','keterangan'], 'string'],
             [['metode_bayar','paket_id'], 'integer'],
         ];
