@@ -26,6 +26,7 @@ use common\models\PwPaket;
 use common\models\Kota;
 use common\models\TrPaketwisata;
 use common\models\TrTravel;
+use common\models\TrJadwal;
 
 /**
  * Site controller
@@ -451,8 +452,8 @@ class SiteController extends Controller
     {
         $model = new TravelForm();
         $listkota = Kota::find()->all();
-        $TrTravel = new TrTravel();
-        $query =  $TrTravel->GetListTravel($id_kota_berangkat,$id_kota_tujuan,$tgl_berangkat,$jam_berangkat);
+        $TrJadwal = new TrJadwal();
+        $query =  $TrJadwal->GetListTravel($id_kota_berangkat,$id_kota_tujuan,$tgl_berangkat,$jam_berangkat);
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $pages->params = (['kota'=>$listkota,'page'=>$pages->offset,'per-page'=>$pages->limit]);

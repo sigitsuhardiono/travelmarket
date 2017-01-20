@@ -38,7 +38,6 @@ class TrTravel extends \yii\db\ActiveRecord
         return [
             [['kota_asal', 'kota_tujuan', 'company_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['created_at', 'updated_at'], 'required'],
-            [['jam'], 'string', 'max' => 11],
             [['company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['company_id' => 'id']],
             [['kota_asal'], 'exist', 'skipOnError' => true, 'targetClass' => Kota::className(), 'targetAttribute' => ['kota_asal' => 'id']],
             [['kota_tujuan'], 'exist', 'skipOnError' => true, 'targetClass' => Kota::className(), 'targetAttribute' => ['kota_tujuan' => 'id']],
@@ -54,7 +53,6 @@ class TrTravel extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'kota_asal' => Yii::t('app', 'Kota Asal'),
             'kota_tujuan' => Yii::t('app', 'Kota Tujuan'),
-            'jam' => Yii::t('app', 'Jam'),
             'company_id' => Yii::t('app', 'Company ID'),
             'status' => Yii::t('app', 'Status'),
             'created_at' => Yii::t('app', 'Created At'),
@@ -85,6 +83,15 @@ class TrTravel extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Kota::className(), ['id' => 'kota_tujuan']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTrJadwals()
+    {
+        return $this->hasMany(TrJadwal::className(), ['tr_travel_id' => 'id']);
+    }
+
 
     public static function GetListTravel($id_kota_berangkat,$id_kota_tujuan,$tgl_berangkat,$jam_berangkat)
     {
