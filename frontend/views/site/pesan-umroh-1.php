@@ -94,7 +94,7 @@
             </section>
             <!-- main-container end -->
 <?php
-$this->registerJsFile('@web/site/js/paket_wisata.js', ['depends' => [\frontend\assets\GlobalAsset::className()]]);
+$this->registerJsFile('@web/js/paket_wisata.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 ?>
 
 

@@ -30,6 +30,7 @@ class AppAsset extends AssetBundle
         'js/jquery-clockpicker.min.js',
         'js/bootstrap-datepicker.min.js',
         'js/bootstrap-datepicker.id.min.js',
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyBRvPgWdEwR99-u5GeSxvkwXcPnZxxwqXY&v=3&libraries=places&region=id',
     ];
     public $depends = [
         'common\assets\FontAwesomeAsset',
