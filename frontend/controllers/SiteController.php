@@ -253,9 +253,6 @@ class SiteController extends Controller
 	*/
 	public function actionListPaketWisata($kategori)
 	{
-		// print_r(Yii::$app->request->post());
-		// print_r($_POST);
-		// die();
 		$model      = new WisataForm();
 		$dtkategori = PwKategori::find()->all();
 		$kota       = Kota::find()->all();
@@ -329,7 +326,7 @@ class SiteController extends Controller
 		return $this->render('pemesanan-paket-sukses',['by'=>$by]);
 	}
 
-		/**
+	/**
 	 * Displays umroh.
 	 *
 	 * @return mixed
@@ -354,7 +351,7 @@ class SiteController extends Controller
 	 * Displays daftar layanan umroh.
 	 *
 	 * @return mixed
-	*/
+	 */
 	public function actionListPaketUmroh($kota)
 	{
 		$model = new UmrohForm();

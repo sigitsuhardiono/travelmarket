@@ -1,9 +1,9 @@
-           <?php
-        use yii\helpers\Html;
-        use yii\helpers\Url;
-        use yii\helpers\ArrayHelper;
-        use yii\widgets\ActiveForm;
-           ?>
+<?php
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\widgets\ActiveForm;
+?>
             <!-- banner start -->
             <!-- ================ -->
             <div class="banner banner-big-height dark-translucent-bg padding-bottom-clear" style="background-image:url('images/hotel-banner.jpg');background-position: 50% 32%;">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                    
+
                     </div>
                 </div>
             </section>
@@ -116,5 +116,5 @@
             </section>
             <!-- section end -->
 <?php
-$this->registerJsFile('@web/site/js/travel.js', ['depends' => [\frontend\assets\GlobalAsset::className()]]);
+$this->registerJsFile('@web/site/js/travel.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 ?>
