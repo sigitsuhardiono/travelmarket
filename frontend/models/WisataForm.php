@@ -31,8 +31,8 @@ class WisataForm extends Model
     public function attributeLabels()
     {
         return [
-            'id_kategori' => 'Pilih Kategori Tujuan Anda.',
-            'id_kota' => 'Pilih Kota Tempat Anda Berangkat',
+            'id_kategori' => 'Kategori',
+            'id_kota' => 'Kota',
         ];
     }
 }
