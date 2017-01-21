@@ -116,5 +116,5 @@ use yii\widgets\ActiveForm;
             </section>
             <!-- section end -->
 <?php
-$this->registerJsFile('@web/site/js/travel.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+$this->registerJsFile('@web/js/travel.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 ?>

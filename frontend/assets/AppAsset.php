@@ -18,6 +18,8 @@ class AppAsset extends AssetBundle
         'css/slick.css',
         'css/main.css',
         'css/search.css',
+        'css/bootstrap-clockpicker.min.css',
+        'css/bootstrap-datepicker3.min.css',
     ];
     public $js = [
         // 'js/modernizr.js',
@@ -25,6 +27,9 @@ class AppAsset extends AssetBundle
         // 'js/owl-carousel.min.js',
         'js/slick.min.js',
         'js/main.js',
+        'js/jquery-clockpicker.min.js',
+        'js/bootstrap-datepicker.min.js',
+        'js/bootstrap-datepicker.id.min.js',
     ];
     public $depends = [
         'common\assets\FontAwesomeAsset',
