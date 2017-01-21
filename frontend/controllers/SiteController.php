@@ -386,6 +386,47 @@ class SiteController extends Controller
 		return $this->render('detail-umroh',['DataPaket'=>$DataPaket]);
 	}
 
+	/*
+	 * Displays detail paket umroh.
+	 *
+	 * @return mixed
+	*/
+	public function actionPesanPaketUmroh($id)
+	{
+		$model = new SimpanWisataForm();
+		$PwPaket = new PwPaket();
+		if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+			$TrPaketwisata = new TrPaketwisata();
+			$TrPaketwisata->kode = "PU-".time();
+			$TrPaketwisata->nama_pemesan = $model->nama_pemesan;
+			$TrPaketwisata->telp1 = $model->telp1;
+			$TrPaketwisata->telp2 = $model->telp2;
+			$TrPaketwisata->alamat_jemput = $model->alamat_jemput;
+			$TrPaketwisata->detail_jemput = $model->detail_jemput;
+			$TrPaketwisata->harga = $model->harga;
+			$TrPaketwisata->metode_bayar = $model->metode_bayar;
+			$TrPaketwisata->paket_id = $model->paket_id;
+			$TrPaketwisata->keterangan = $model->keterangan;
+			$TrPaketwisata->created_at = time();
+			$TrPaketwisata->save();
+			Yii::$app->getSession()->setFlash('no_order', $TrPaketwisata->kode);
+			$this->redirect(array("/site/pemesanan-umroh-sukses?by=".$TrPaketwisata->metode_bayar));
+		}
+		else{
+			$DataPaket =  $PwPaket->GetPaketById($id);
+			return $this->render('pesan-umroh-1',['DataPaket'=>$DataPaket,'model'=>$model]);
+		}
+	}
+
+	/**
+	 * Displays pemesanan paket umroh sukses.
+	 *
+	 * @return mixed
+	*/
+	public function actionPemesananUmrohSukses($by)
+	{
+		return $this->render('pemesanan-umroh-sukses',['by'=>$by]);
+	}
 
 	/**
 	 * Displays umroh.
@@ -416,8 +457,8 @@ class SiteController extends Controller
 	{
 		$model = new TravelForm();
 		$listkota = Kota::find()->all();
-		$TrTravel = new TrTravel();
-		$query =  $TrTravel->GetListTravel($id_kota_berangkat,$id_kota_tujuan,$tgl_berangkat,$jam_berangkat);
+		$TrJadwal = new TrJadwal();
+		$query =  $TrJadwal->GetListTravel($id_kota_berangkat,$id_kota_tujuan,$tgl_berangkat,$jam_berangkat);
 		$countQuery = clone $query;
 		$pages = new Pagination(['totalCount' => $countQuery->count()]);
 		$pages->params = (['kota'=>$listkota,'page'=>$pages->offset,'per-page'=>$pages->limit]);
@@ -438,97 +479,5 @@ class SiteController extends Controller
 	{
 		return $this->render('pesan_travel' ,[]);
 	}
-     * Displays detail paket umroh.
-     *
-     * @return mixed
-    */
-    public function actionPesanPaketUmroh($id)
-    {
-        $model = new SimpanWisataForm();
-        $PwPaket = new PwPaket();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $TrPaketwisata = new TrPaketwisata();
-            $TrPaketwisata->kode = "PU-".time();
-            $TrPaketwisata->nama_pemesan = $model->nama_pemesan;
-            $TrPaketwisata->telp1 = $model->telp1;
-            $TrPaketwisata->telp2 = $model->telp2;
-            $TrPaketwisata->alamat_jemput = $model->alamat_jemput;
-            $TrPaketwisata->detail_jemput = $model->detail_jemput;
-            $TrPaketwisata->harga = $model->harga;
-            $TrPaketwisata->metode_bayar = $model->metode_bayar;
-            $TrPaketwisata->paket_id = $model->paket_id;
-            $TrPaketwisata->keterangan = $model->keterangan;
-            $TrPaketwisata->created_at = time();
-            $TrPaketwisata->save();
-            Yii::$app->getSession()->setFlash('no_order', $TrPaketwisata->kode);
-            $this->redirect(array("/site/pemesanan-umroh-sukses?by=".$TrPaketwisata->metode_bayar));
-        }
-        else{
-            $DataPaket =  $PwPaket->GetPaketById($id);
-            return $this->render('pesan-umroh-1',['DataPaket'=>$DataPaket,'model'=>$model]);
-        }
-    }
-
-    /**
-     * Displays pemesanan paket umroh sukses.
-     *
-     * @return mixed
-    */
-    public function actionPemesananUmrohSukses($by)
-    {
-        return $this->render('pemesanan-umroh-sukses',['by'=>$by]);
-    }
-
-        /**
-     * Displays umroh.
-     *
-     * @return mixed
-     */
-    public function actionTravel()
-    {
-        $model = new TravelForm();
-        $kota = Kota::find()->all();
-        // $pwUmrohNew =  PwPaket::find()->with('company')->where(['=', 'pw_paket.status_wisata', 2])->limit(4)->all();
-        if ($model->load(Yii::$app->request->post())) {
-           return $this->redirect(Url::to(['list-travel', 'id_kota_berangkat' => $model->id_kota_berangkat, 'id_kota_tujuan' => $model->id_kota_tujuan,'tgl_berangkat' => $model->tgl_berangkat, 'jam_berangkat' => $model->jam_berangkat]));
-        }
-        else{
-            return $this->render('travel' ,[
-                'kota' => $kota,'model'=>$model
-            ]);
-        }
-    }
-
-    /**
-     * Displays daftar travel.
-     *
-     * @return mixed
-    */
-    public function actionListTravel($id_kota_berangkat,$id_kota_tujuan,$tgl_berangkat,$jam_berangkat)
-    {
-        $model = new TravelForm();
-        $listkota = Kota::find()->all();
-        $TrJadwal = new TrJadwal();
-        $query =  $TrJadwal->GetListTravel($id_kota_berangkat,$id_kota_tujuan,$tgl_berangkat,$jam_berangkat);
-        $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count()]);
-        $pages->params = (['kota'=>$listkota,'page'=>$pages->offset,'per-page'=>$pages->limit]);
-        $pages->route = 'site/list-travel/';
-        $pages->setPageSize(10);
-        $DataPaket = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->all();
-        return $this->render('list-travel',['pages' => $pages,'model'=>$model,'DataPaket'=>$DataPaket,'kota' => $listkota]);
-    }
-
-    /**
-     * Displays pesan travel.
-     *
-     * @return mixed
-     */
-    public function actionPesanTravel()
-    {
-        return $this->render('pesan_travel' ,[]);
-    }
 
 }
