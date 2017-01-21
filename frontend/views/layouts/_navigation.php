@@ -45,8 +45,10 @@ use yii\helpers\Html;
 		<?php echo Html::a('<i class="fa fa-lg fa-fw fa-map-marker"></i>', Yii::$app->homeUrl, ['class' => 'navbar-brand small']) ?>
 		<ul class="nav nav-pills">
 			<li class="active"><a href="#">Paket wisata</a></li>
-			<li><a href="#">Travel shuttle</a></li>
-			<li><a href="#">Rental mobil</a></li>
+            <li> <a href="/umroh">Umroh</a></li>
+            <li> <a href="travel">Travel</a></li>
+            <li> <a href="drop">Drop</a></li>
+            <li> <a href="rental">Rental</a></li>
 		</ul>
 	</div>
 </div>
